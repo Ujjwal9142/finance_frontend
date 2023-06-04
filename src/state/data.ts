@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: null,
+  monthlyRevenueExpensesData: null,
 };
 
 export const dataSlice = createSlice({
-  name: 'data',
+  name: "data",
   initialState,
   reducers: {
-    setData: (state, action) => {
-      state.data = action.payload.data;
+    setMonthlyRevenueExpensesData: (state, action) => {
+      state.monthlyRevenueExpensesData = action.payload.data;
     },
   },
 });
 
-export const { setData } = dataSlice.actions;
+export const { setMonthlyRevenueExpensesData } = dataSlice.actions;
 export default dataSlice.reducer;
