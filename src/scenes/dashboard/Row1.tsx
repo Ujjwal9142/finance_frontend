@@ -4,7 +4,6 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
@@ -12,8 +11,9 @@ import axiosInstance from "@/config/axiosInstance";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMonthlyRevenueExpensesData } from "../../state/data";
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { Month } from "@/interfaces/interface";
+import BoxHeader from "@/components/BoxHeader";
 
 type Props = {};
 
@@ -47,20 +47,27 @@ const Row1: React.FC = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="a">
-        <ResponsiveContainer width="100%" height="100%">
+        <Box>
+          <BoxHeader
+            title="Revenue and Expeses"
+            subTitle="Top line represents revenue, bottom line represents expenses"
+            sideText="+4%"
+          />
+        </Box>
+        <ResponsiveContainer width="100%" height="85%">
           <AreaChart
             width={500}
             height={400}
             data={monthlyRevenueExpensesData}
             margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
+              top: 15,
+              right: 25,
+              left: -10,
+              bottom: 60,
             }}
           >
             <defs>
-              <linearGradient id="colorRevenue" x1="0" x2="0" y1="0" y2="1">
+              <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
                   stopColor={palette.primary[300]}
@@ -73,7 +80,7 @@ const Row1: React.FC = (props: Props) => {
                 />
               </linearGradient>
 
-              <linearGradient id="colorExpenses" x1="0" x2="0" y1="0" y2="1">
+              <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
                   stopColor={palette.primary[300]}
